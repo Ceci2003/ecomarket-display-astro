@@ -1,0 +1,156 @@
+---
+interface Props {
+  images: string[];
+  lang: 'bg' | 'en';
+}
+
+const { images, lang } = Astro.props;
+---
+
+<div class="gallery-grid">
+  {images.map((image, index) => (
+    <div class="gallery-item" data-index={index}>
+      <img src={image} alt={`Gallery image ${index + 1}`} loading="lazy" />
+    </div>
+  ))}
+</div>
+
+<script>
+  // Simple lightbox functionality
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  
+  galleryItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.getAttribute('data-index') || '0');
+      const images = Array.from(galleryItems).map((img) => 
+        img.querySelector('img')?.src
+      ).filter(Boolean);
+      
+      // Create lightbox
+      const lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.innerHTML = `
+        <button class="lightbox-close">×</button>
+        <button class="lightbox-prev">‹</button>
+        <button class="lightbox-next">›</button>
+        <img src="${images[index]}" alt="Gallery image" />
+      `;
+      
+      document.body.appendChild(lightbox);
+      document.body.style.overflow = 'hidden';
+      
+      let currentIndex = index;
+      
+      const updateImage = () => {
+        const img = lightbox.querySelector('img');
+        if (img && images[currentIndex]) {
+          img.src = images[currentIndex];
+        }
+      };
+      
+      lightbox.querySelector('.lightbox-close')?.addEventListener('click', () => {
+        lightbox.remove();
+        document.body.style.overflow = '';
+      });
+      
+      lightbox.querySelector('.lightbox-prev')?.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage();
+      });
+      
+      lightbox.querySelector('.lightbox-next')?.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage();
+      });
+      
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.remove();
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .gallery-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.05);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .lightbox-close {
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .lightbox-prev {
+    left: 2rem;
+  }
+
+  .lightbox-next {
+    right: 2rem;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+</style>
+

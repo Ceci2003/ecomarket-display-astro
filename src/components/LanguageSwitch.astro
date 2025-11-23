@@ -1,0 +1,60 @@
+---
+import { getLocalizedPath } from '../utils/language';
+import type { Language } from '../utils/language';
+
+interface Props {
+  currentLang: Language;
+  currentPath: string;
+}
+
+const { currentLang, currentPath } = Astro.props;
+const bgPath = getLocalizedPath(currentPath, 'bg');
+const enPath = getLocalizedPath(currentPath, 'en');
+---
+
+<div class="language-switch">
+  <a 
+    href={bgPath} 
+    class={`lang-link ${currentLang === 'bg' ? 'active' : ''}`}
+    aria-label="Преминаване към български"
+  >
+    BG
+  </a>
+  <span class="separator">|</span>
+  <a 
+    href={enPath} 
+    class={`lang-link ${currentLang === 'en' ? 'active' : ''}`}
+    aria-label="Switch to English"
+  >
+    EN
+  </a>
+</div>
+
+<style>
+  .language-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lang-link {
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .lang-link.active {
+    background-color: var(--color-accent2);
+    color: var(--color-primary);
+  }
+
+  .lang-link:hover {
+    background-color: var(--color-accent2);
+  }
+
+  .separator {
+    color: var(--color-border);
+  }
+</style>
+

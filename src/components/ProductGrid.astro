@@ -1,0 +1,35 @@
+---
+import type { Product } from '../utils/data';
+import type { Language } from '../utils/language';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  products: Product[];
+  lang: Language;
+}
+
+const { products, lang } = Astro.props;
+---
+
+<div class="product-grid">
+  {products.map((product) => (
+    <ProductCard product={product} lang={lang} />
+  ))}
+</div>
+
+<style>
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+

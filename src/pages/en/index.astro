@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SEO from '../../components/SEO.astro';
+import Hero from '../../components/Hero.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import BackToTop from '../../components/BackToTop.astro';
+import { getFeaturedProducts } from '../../utils/data';
+
+const lang = 'en';
+const products = getFeaturedProducts();
+---
+
+<BaseLayout lang={lang}>
+  <SEO lang={lang} />
+  <Header lang={lang} currentPath={Astro.url.pathname} />
+  <main>
+    <Hero lang={lang} />
+    <section class="container">
+      <h2 style="text-align: center; margin: 3rem 0 2rem; color: var(--color-primary);">
+        Featured Products
+      </h2>
+      <ProductGrid products={products} lang={lang} />
+    </section>
+  </main>
+  <Footer lang={lang} />
+  <BackToTop />
+</BaseLayout>
+

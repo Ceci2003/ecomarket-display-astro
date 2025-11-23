@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import BackToTop from '../components/BackToTop.astro';
+import { getSettings } from '../utils/data';
+
+const lang = 'bg';
+const settings = getSettings(lang);
+---
+
+<BaseLayout lang={lang}>
+  <SEO lang={lang} title="Контакти" path="/contact" />
+  <Header lang={lang} currentPath={Astro.url.pathname} />
+  <main>
+    <div class="container">
+      <Breadcrumbs 
+        lang={lang} 
+        items={[{ label: settings.navigation.contact, href: '/contact' }]} 
+      />
+      <h1 style="margin: 2rem 0; color: var(--color-primary);">Контакти</h1>
+      <div class="contact-layout">
+        <div class="contact-form-wrapper">
+          <h2>{lang === 'bg' ? 'Изпратете ни съобщение' : 'Send us a message'}</h2>
+          <ContactForm lang={lang} />
+        </div>
+        <div class="contact-info-wrapper">
+          <ContactInfo lang={lang} />
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <BackToTop />
+</BaseLayout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 2rem 0;
+  }
+
+  .contact-form-wrapper h2,
+  .contact-info-wrapper h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 968px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

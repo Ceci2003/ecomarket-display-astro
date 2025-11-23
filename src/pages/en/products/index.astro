@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import SEO from '../../../components/SEO.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import ProductGrid from '../../../components/ProductGrid.astro';
+import BackToTop from '../../../components/BackToTop.astro';
+import { getProducts } from '../../../utils/data';
+
+const lang = 'en';
+const products = getProducts();
+---
+
+<BaseLayout lang={lang}>
+  <SEO lang={lang} title="Products" path="/en/products" />
+  <Header lang={lang} currentPath={Astro.url.pathname} />
+  <main>
+    <div class="container">
+      <Breadcrumbs 
+        lang={lang} 
+        items={[{ label: 'Products', href: '/en/products' }]} 
+      />
+      <h1 style="margin: 2rem 0; color: var(--color-primary);">All Products</h1>
+      <ProductGrid products={products} lang={lang} />
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <BackToTop />
+</BaseLayout>
+

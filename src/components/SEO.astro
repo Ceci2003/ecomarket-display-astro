@@ -1,0 +1,44 @@
+---
+import { getSettings } from '../utils/data';
+import type { Language } from '../utils/language';
+
+interface Props {
+  lang: Language;
+  title?: string;
+  description?: string;
+  image?: string;
+  path?: string;
+}
+
+const { lang, title, description, image, path = '' } = Astro.props;
+const settings = getSettings(lang);
+const basePath = lang === 'en' ? '/en' : '';
+const siteTitle = title ? `${title} | ${settings.siteTitle}` : settings.siteTitle;
+const metaDescription = description || settings.motto;
+const metaImage = image || '/og-image.jpg';
+const canonicalUrl = `https://example.com${basePath}${path}`;
+---
+
+<title>{siteTitle}</title>
+<meta name="description" content={metaDescription} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={metaImage} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalUrl} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={metaDescription} />
+<meta property="twitter:image" content={metaImage} />
+
+<!-- Language alternates -->
+<link rel="alternate" hreflang="bg" href={`https://example.com${path}`} />
+<link rel="alternate" hreflang="en" href={`https://example.com/en${path}`} />
+<link rel="alternate" hreflang="x-default" href={`https://example.com${path}`} />
+

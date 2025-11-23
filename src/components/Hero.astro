@@ -1,0 +1,70 @@
+---
+import type { Language } from '../utils/language';
+import { getSettings } from '../utils/data';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const settings = getSettings(lang);
+const basePath = lang === 'en' ? '/en' : '';
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">{settings.siteTitle}</h1>
+      <p class="hero-motto">{settings.motto}</p>
+      <div class="hero-actions">
+        <a href={`${basePath}/products`} class="btn">{settings.navigation.products}</a>
+        <a href={`${basePath}/about`} class="btn btn-secondary">{settings.navigation.about}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--color-accent2) 0%, var(--color-accent1) 100%);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .hero-motto {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-motto {
+      font-size: 1rem;
+    }
+  }
+</style>
+

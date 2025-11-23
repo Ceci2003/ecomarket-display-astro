@@ -1,0 +1,30 @@
+{
+  "light": {
+    "primary": "#6B8E23",
+    "secondary": "#A97D5D",
+    "accent1": "#E6C48B",
+    "accent2": "#F1E9D2",
+    "text": "#2F2F2F",
+    "background": "#FFFFFF",
+    "cardBackground": "#FAFAF7",
+    "borderColor": "#E1DCC8",
+    "hover": "#55741A",
+    "link": "#6B8E23",
+    "linkHover": "#55741A"
+  },
+  "dark": {
+    "primary": "#55741A",
+    "secondary": "#8B6B4D",
+    "accent1": "#D4B46B",
+    "accent2": "#E1D9C2",
+    "text": "#FAFAF7",
+    "background": "#121212",
+    "cardBackground": "#1E1E1E",
+    "borderColor": "#3A3A3A",
+    "hover": "#6B8E23",
+    "link": "#8BAA3A",
+    "linkHover": "#A5C94A"
+  },
+  "enableDarkMode": false
+}
+

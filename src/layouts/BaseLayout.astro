@@ -1,0 +1,121 @@
+---
+import { getColors } from '../utils/data';
+import type { Language } from '../utils/language';
+
+interface Props {
+  lang: Language;
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { lang, title, description, image } = Astro.props;
+const colors = getColors();
+const basePath = lang === 'en' ? '/en' : '';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <slot name="head" />
+  </head>
+  <body>
+    <style is:global define:vars={{
+      primary: colors.light.primary,
+      secondary: colors.light.secondary,
+      accent1: colors.light.accent1,
+      accent2: colors.light.accent2,
+      text: colors.light.text,
+      background: colors.light.background,
+      cardBackground: colors.light.cardBackground,
+      borderColor: colors.light.borderColor,
+      hover: colors.light.hover,
+      link: colors.light.link,
+      linkHover: colors.light.linkHover,
+    }}>
+      :root {
+        --color-primary: var(--primary);
+        --color-secondary: var(--secondary);
+        --color-accent1: var(--accent1);
+        --color-accent2: var(--accent2);
+        --color-text: var(--text);
+        --color-background: var(--background);
+        --color-card-background: var(--cardBackground);
+        --color-border: var(--borderColor);
+        --color-hover: var(--hover);
+        --color-link: var(--link);
+        --color-link-hover: var(--linkHover);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--color-link);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--color-link-hover);
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn:hover {
+        background-color: var(--color-hover);
+      }
+
+      .btn-secondary {
+        background-color: var(--color-secondary);
+      }
+
+      .btn-secondary:hover {
+        opacity: 0.9;
+      }
+    </style>
+    <slot />
+  </body>
+</html>
+

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdminJsonEditor from '../components/AdminJsonEditor.astro';
+import ImageUploader from '../components/ImageUploader.astro';
+import settingsData from '@data/settings.json';
+import productsData from '@data/products.json';
+import colorsData from '@data/colors.json';
+
+// Security: Check for secret key
+const secretKey = Astro.url.searchParams.get('key');
+const ADMIN_SECRET_KEY = import.meta.env.ADMIN_SECRET_KEY || 'change-this-secret-key';
+
+if (secretKey !== ADMIN_SECRET_KEY) {
+  return Astro.redirect('/');
+}
+
+// Convert JSON objects to strings for editing
+const settingsContent = JSON.stringify(settingsData, null, 2);
+const productsContent = JSON.stringify(productsData, null, 2);
+const colorsContent = JSON.stringify(colorsData, null, 2);
+---
+
+<BaseLayout lang="en">
+  <head>
+    <title>Admin Data Editor</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <header class="admin-header">
+        <h1>Admin Data Editor</h1>
+        <p class="admin-warning">⚠️ This is a protected admin page. Keep the secret key secure.</p>
+      </header>
+
+      <div class="admin-content">
+        <section class="admin-section">
+          <h2>JSON Files</h2>
+          <AdminJsonEditor filename="settings.json" content={settingsContent} />
+          <AdminJsonEditor filename="products.json" content={productsContent} />
+          <AdminJsonEditor filename="colors.json" content={colorsContent} />
+        </section>
+
+        <section class="admin-section">
+          <h2>Image Upload</h2>
+          <ImageUploader targetDir="/products" />
+          <ImageUploader targetDir="/gallery" />
+          <ImageUploader targetDir="/brand" />
+        </section>
+      </div>
+
+      <footer class="admin-footer">
+        <p>Note: In production, implement proper server endpoints to save JSON files and handle image uploads.</p>
+      </footer>
+    </div>
+  </body>
+</BaseLayout>
+
+<style is:global>
+  body {
+    background-color: #f5f5f5;
+  }
+</style>
+
+<style>
+  .admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .admin-header {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .admin-header h1 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .admin-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border-left: 4px solid #ffc107;
+  }
+
+  .admin-content {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .admin-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .admin-section h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .admin-footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+</style>
+

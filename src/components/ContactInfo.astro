@@ -1,0 +1,99 @@
+---
+import type { Language } from '../utils/language';
+import { getSettings } from '../utils/data';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const settings = getSettings(lang);
+const contacts = settings.contacts;
+---
+
+<div class="contact-info">
+  <div class="contact-item">
+    <h3>{lang === 'bg' ? 'Адрес' : 'Address'}</h3>
+    <p>{contacts.address}</p>
+  </div>
+  <div class="contact-item">
+    <h3>{lang === 'bg' ? 'Телефон' : 'Phone'}</h3>
+    <p><a href={`tel:${contacts.phone}`}>{contacts.phone}</a></p>
+  </div>
+  <div class="contact-item">
+    <h3>{lang === 'bg' ? 'Имейл' : 'Email'}</h3>
+    <p><a href={`mailto:${contacts.email}`}>{contacts.email}</a></p>
+  </div>
+  {(contacts.facebook || contacts.instagram || contacts.tiktok) && (
+    <div class="contact-item">
+      <h3>{lang === 'bg' ? 'Социални мрежи' : 'Social Media'}</h3>
+      <div class="social-links">
+        {contacts.facebook && (
+          <a href={contacts.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+        )}
+        {contacts.instagram && (
+          <a href={contacts.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+        )}
+        {contacts.tiktok && (
+          <a href={contacts.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+        )}
+      </div>
+    </div>
+  )}
+  {contacts.googleMapsEmbed && (
+    <div class="contact-item map">
+      <h3>{lang === 'bg' ? 'Локация' : 'Location'}</h3>
+      <div class="map-container" set:html={contacts.googleMapsEmbed} />
+    </div>
+  )}
+</div>
+
+<style>
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-item h3 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .contact-item p {
+    color: var(--color-text);
+    font-size: 1.1rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent2);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background-color: var(--color-accent1);
+  }
+
+  .map-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+  }
+</style>
+

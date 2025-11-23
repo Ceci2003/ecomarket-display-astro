@@ -1,0 +1,89 @@
+---
+import type { Language } from '../utils/language';
+import { getSettings } from '../utils/data';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const settings = getSettings(lang);
+const about = settings.about;
+---
+
+<section class="about-block">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>{lang === 'bg' ? 'Нашата история' : 'Our Story'}</h2>
+        <p>{about.story}</p>
+        <h3>{lang === 'bg' ? 'Нашата мисия' : 'Our Mission'}</h3>
+        <p>{about.mission}</p>
+        {about.values && about.values.length > 0 && (
+          <div class="values">
+            <h3>{lang === 'bg' ? 'Нашите ценности' : 'Our Values'}</h3>
+            <ul class="values-list">
+              {about.values.map((value) => (
+                <li>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-block {
+    padding: 4rem 0;
+  }
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-text h2,
+  .about-text h3 {
+    color: var(--color-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+  }
+
+  .about-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-text p {
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .values {
+    margin-top: 2rem;
+  }
+
+  .values-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .values-list li {
+    padding: 1rem;
+    background-color: var(--color-accent2);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+</style>
+

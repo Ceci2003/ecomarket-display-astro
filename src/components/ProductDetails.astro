@@ -1,0 +1,166 @@
+---
+import type { Product } from '../utils/data';
+import type { Language } from '../utils/language';
+import CategoryBadge from './CategoryBadge.astro';
+
+interface Props {
+  product: Product;
+  lang: Language;
+}
+
+const { product, lang } = Astro.props;
+const productData = product[lang];
+---
+
+<div class="product-details">
+  <div class="product-images">
+    {product.images.map((image, index) => (
+      <img 
+        src={image} 
+        alt={`${productData.name} - ${index + 1}`}
+        class={index === 0 ? 'main-image' : 'thumbnail'}
+        loading={index === 0 ? 'eager' : 'lazy'}
+      />
+    ))}
+  </div>
+  <div class="product-content">
+    <CategoryBadge category={product.category} lang={lang} />
+    <h1 class="product-title">{productData.name}</h1>
+    <p class="product-price-large">{product.price.toFixed(2)} лв.</p>
+    <p class="product-description">{productData.shortDescription}</p>
+    <div class="product-section">
+      <h3>{lang === 'bg' ? 'Описание' : 'Description'}</h3>
+      <p>{productData.longDescription}</p>
+    </div>
+    <div class="product-section">
+      <h3>{lang === 'bg' ? 'Съставки' : 'Ingredients'}</h3>
+      <p>{productData.ingredients}</p>
+    </div>
+    <div class="product-section">
+      <h3>{lang === 'bg' ? 'Произход' : 'Origin'}</h3>
+      <p>{productData.origin}</p>
+    </div>
+    <div class="product-section">
+      <h3>{lang === 'bg' ? 'Употреба' : 'Usage'}</h3>
+      <p>{productData.usage}</p>
+    </div>
+    {productData.benefits && productData.benefits.length > 0 && (
+      <div class="product-section">
+        <h3>{lang === 'bg' ? 'Полезни свойства' : 'Benefits'}</h3>
+        <ul class="benefits-list">
+          {productData.benefits.map((benefit) => (
+            <li>{benefit}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 2rem 0;
+  }
+
+  .product-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .thumbnail:hover {
+    transform: scale(1.05);
+  }
+
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .product-price-large {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .product-description {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    opacity: 0.9;
+  }
+
+  .product-section {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .product-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .product-section p {
+    color: var(--color-text);
+    line-height: 1.7;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .benefits-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--color-text);
+  }
+
+  .benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  @media (max-width: 968px) {
+    .product-details {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
+

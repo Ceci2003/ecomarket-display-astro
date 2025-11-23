@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AboutBlock from '../components/AboutBlock.astro';
+import BackToTop from '../components/BackToTop.astro';
+import { getSettings } from '../utils/data';
+
+const lang = 'bg';
+const settings = getSettings(lang);
+---
+
+<BaseLayout lang={lang}>
+  <SEO lang={lang} title="За нас" path="/about" />
+  <Header lang={lang} currentPath={Astro.url.pathname} />
+  <main>
+    <div class="container">
+      <Breadcrumbs 
+        lang={lang} 
+        items={[{ label: settings.navigation.about, href: '/about' }]} 
+      />
+      <AboutBlock lang={lang} />
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <BackToTop />
+</BaseLayout>
+

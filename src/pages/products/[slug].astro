@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SEO from '../../components/SEO.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ProductDetails from '../../components/ProductDetails.astro';
+import BackToTop from '../../components/BackToTop.astro';
+import { getProductBySlug, getSettings } from '../../utils/data';
+
+const lang = 'bg';
+const { slug } = Astro.params;
+const product = getProductBySlug(slug || '');
+const basePath = '';
+
+if (!product) {
+  return Astro.redirect('/products');
+}
+
+const productData = product[lang];
+const settings = getSettings(lang);
+---
+
+<BaseLayout lang={lang}>
+  <SEO 
+    lang={lang} 
+    title={productData.name} 
+    description={productData.shortDescription}
+    path={`/products/${slug}`}
+  />
+  <Header lang={lang} currentPath={Astro.url.pathname} />
+  <main>
+    <div class="container">
+      <Breadcrumbs 
+        lang={lang} 
+        items={[
+          { label: settings.navigation.products, href: '/products' },
+          { label: productData.name, href: `/products/${slug}` }
+        ]} 
+      />
+      <ProductDetails product={product} lang={lang} />
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <BackToTop />
+</BaseLayout>
+

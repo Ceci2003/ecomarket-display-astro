@@ -1,0 +1,109 @@
+---
+import type { Language } from '../utils/language';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+
+<form class="contact-form" id="contact-form">
+  <div class="form-group">
+    <label for="name">{lang === 'bg' ? 'Име' : 'Name'}</label>
+    <input type="text" id="name" name="name" required />
+  </div>
+  <div class="form-group">
+    <label for="email">{lang === 'bg' ? 'Имейл' : 'Email'}</label>
+    <input type="email" id="email" name="email" required />
+  </div>
+  <div class="form-group">
+    <label for="phone">{lang === 'bg' ? 'Телефон' : 'Phone'}</label>
+    <input type="tel" id="phone" name="phone" />
+  </div>
+  <div class="form-group">
+    <label for="message">{lang === 'bg' ? 'Съобщение' : 'Message'}</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="btn">
+    {lang === 'bg' ? 'Изпрати' : 'Send'}
+  </button>
+  <div id="form-message" class="form-message"></div>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const messageDiv = document.getElementById('form-message');
+
+  if (form && messageDiv) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      // In a real application, you would send this to a server
+      // For now, we'll just show a success message
+      messageDiv.textContent = form.getAttribute('lang') === 'bg' 
+        ? 'Благодарим ви! Съобщението е изпратено успешно.'
+        : 'Thank you! Your message has been sent successfully.';
+      messageDiv.className = 'form-message success';
+      
+      form.reset();
+      
+      setTimeout(() => {
+        messageDiv.textContent = '';
+        messageDiv.className = 'form-message';
+      }, 5000);
+    });
+  }
+</script>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .form-message {
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .form-message.success {
+    background-color: var(--color-accent2);
+    color: var(--color-primary);
+  }
+</style>
+

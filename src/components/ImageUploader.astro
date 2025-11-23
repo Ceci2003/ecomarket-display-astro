@@ -1,0 +1,184 @@
+---
+interface Props {
+  targetDir: string;
+}
+
+const { targetDir } = Astro.props;
+---
+
+<div class="image-uploader">
+  <h3>Upload Images</h3>
+  <p class="upload-info">Target directory: <code>{targetDir}</code></p>
+  <div class="upload-area" id="upload-area" data-target-dir={targetDir}>
+    <input 
+      type="file" 
+      id="file-input" 
+      multiple 
+      accept="image/*"
+      style="display: none;"
+    />
+    <label for="file-input" class="upload-label">
+      <span>Click to select images or drag and drop</span>
+    </label>
+    <div class="upload-preview" id="upload-preview"></div>
+  </div>
+  <div class="upload-status" id="upload-status"></div>
+</div>
+
+<script>
+  const fileInput = document.getElementById('file-input') as HTMLInputElement;
+  const uploadArea = document.getElementById('upload-area');
+  const preview = document.getElementById('upload-preview');
+  const status = document.getElementById('upload-status');
+  const targetDir = uploadArea?.getAttribute('data-target-dir') || '';
+
+  if (fileInput && uploadArea && preview && status) {
+    // Click to upload
+    uploadArea.addEventListener('click', (e) => {
+      if (e.target === uploadArea || (e.target as HTMLElement).closest('.upload-label')) {
+        fileInput.click();
+      }
+    });
+
+    // Drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = Array.from(e.dataTransfer?.files || []);
+      handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const files = Array.from((e.target as HTMLInputElement).files || []);
+      handleFiles(files);
+    });
+
+    function handleFiles(files: File[]) {
+      preview.innerHTML = '';
+      status.textContent = '';
+
+      files.forEach((file) => {
+        if (!file.type.startsWith('image/')) {
+          status.textContent = 'Please select only image files';
+          status.className = 'upload-status error';
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = document.createElement('img');
+          img.src = e.target?.result as string;
+          img.style.maxWidth = '200px';
+          img.style.maxHeight = '200px';
+          img.style.objectFit = 'cover';
+          img.style.borderRadius = '4px';
+          img.style.margin = '0.5rem';
+
+          const div = document.createElement('div');
+          div.className = 'preview-item';
+          div.appendChild(img);
+          div.innerHTML += `<p>${file.name}</p>`;
+          preview.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // In a real application, upload files to server
+      status.textContent = `${files.length} file(s) selected. Upload functionality requires server endpoint.`;
+      status.className = 'upload-status info';
+    }
+  }
+</script>
+
+<style>
+  .image-uploader {
+    margin-bottom: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: var(--color-card-background);
+  }
+
+  .image-uploader h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .upload-info {
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+  }
+
+  .upload-info code {
+    background-color: var(--color-accent2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  .upload-area {
+    border: 2px dashed var(--color-border);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .upload-area:hover,
+  .upload-area.dragover {
+    border-color: var(--color-primary);
+    background-color: var(--color-accent2);
+  }
+
+  .upload-label {
+    display: block;
+    cursor: pointer;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .upload-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .preview-item {
+    text-align: center;
+  }
+
+  .preview-item p {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .upload-status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+  }
+
+  .upload-status.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+
+  .upload-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+</style>
+

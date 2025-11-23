@@ -1,0 +1,32 @@
+---
+interface Props {
+  category: string;
+  lang: 'bg' | 'en';
+}
+
+const { category, lang } = Astro.props;
+
+const categoryLabels: Record<string, { bg: string; en: string }> = {
+  honey: { bg: 'Мед', en: 'Honey' },
+  other: { bg: 'Други', en: 'Other' },
+  propolis: { bg: 'Прополис', en: 'Propolis' },
+  wax: { bg: 'Восък', en: 'Wax' },
+};
+
+const label = categoryLabels[category]?.[lang] || category;
+---
+
+<span class="category-badge">{label}</span>
+
+<style>
+  .category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-accent2);
+    color: var(--color-primary);
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+</style>
+
