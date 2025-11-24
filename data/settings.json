@@ -1,59 +1,76 @@
 {
-  "bg": {
-    "siteTitle": "Семейна ферма „Зелена Пътека",
-    "motto": "Натурални вкусове и ръчна изработка — директно от нашия дом",
-    "contacts": {
-      "phone": "+359 87 849 9026",
-      "email": "contact@example.com",
-      "address": "с. Чемиш, обл. Монтана",
-      "facebook": "https://facebook.com/example",
-      "instagram": "https://instagram.com/example",
-      "tiktok": "",
-      "googleMapsEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.1234567890!2d23.1234567!3d43.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDA3JzI0LjQiTiAyM8KwMDcnMjQuNCJF!5e0!3m2!1sen!2sbg!4v1234567890123!5m2!1sen!2sbg\" width=\"100%\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+    "bg": {
+      "siteTitle": "Семейна ферма „Зелена Пътека“",
+      "motto": "Натурални вкусове и ръчна изработка — директно от нашия дом",
+      "contacts": {
+        "phone": "+359 87 849 9026",
+        "email": "contact@example.com",
+        "address": "с. Бели Осъм, обл. Ловеч",
+        "facebook": "https://facebook.com/zelenapateka",
+        "instagram": "https://instagram.com/zelenapateka",
+        "tiktok": "",
+        "googleMapsEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.1234567890!2d24.6900000!3d42.8500000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDUxJzAwLjAiTiAyNMKwNDEnMjAuMCJF!5e0!3m2!1sen!2sbg!4v1234567890123!5m2!1sen!2sbg\" width=\"100%\" height=\"300\" style=\"border:0;\" allowfullscreen loading=\"lazy\"></iframe>"
+      },
+      "about": {
+        "story": "„Зелена Пътека“ е малка семейна ферма, вдъхновена от традициите на домашното производство. Отглеждаме билки, плодове и градински култури в подножието на Балкана, а от тях създаваме ръчно приготвени сладка, сиропи, билкови чайове и арт изделия. Всичко започна като семейно хоби, което постепенно се превърна в мисия — да предлагаме чисти, естествени продукти, направени с грижа и уважение към природата.",
+        "mission": "Да създаваме натурални, ръчно приготвени продукти от локални суровини, като поддържаме устойчиво земеделие и съхраняваме семейните традиции.",
+        "values": [
+          "Чисти съставки",
+          "Семейни рецепти",
+          "Ръчна изработка",
+          "Устойчиво земеделие",
+          "Прозрачност",
+          "Локално производство",
+          "Уважение към природата"
+        ]
+      },
+      "navigation": {
+        "home": "Начало",
+        "products": "Продукти",
+        "about": "За нас",
+        "contact": "Контакти"
+      },
+      "footer": {
+        "copyright": "© 2024 Семейна ферма „Зелена Пътека“. Всички права запазени.",
+        "madeWith": "Направено с"
+      }
     },
-    "about": {
-      "story": "Нашето семейство се занимава с пчеларство повече от 20 години. Започнахме с няколко кошера в двора на баба и дядо, а днес отглеждаме над 50 кошера в екологично чист район на Стара планина. Всяка година събираме мед от различни видове цветя и билки, което придава уникален вкус и аромат на нашите продукти.",
-      "mission": "Да предлагаме чисти и естествени продукти, които запазват традициите на българското пчеларство и уважават природата.",
-      "values": ["Традиции", "Натуралност", "Грижа за пчелите", "Екологичност"]
-    },
-    "navigation": {
-      "home": "Начало",
-      "products": "Продукти",
-      "about": "За нас",
-      "contact": "Контакти"
-    },
-    "footer": {
-      "copyright": "© 2024 Семейна ферма „Зелена Пътека. Всички права запазени.",
-      "madeWith": "Направено с"
-    }
-  },
-  "en": {
-    "siteTitle": "Chemish Apiary",
-    "motto": "Natural honey products from an eco-friendly region",
-    "contacts": {
-      "phone": "+359 88 123 4567",
-      "email": "contact@example.com",
-      "address": "Chemish village, Montana region",
-      "facebook": "https://facebook.com/example",
-      "instagram": "https://instagram.com/example",
-      "tiktok": "",
-      "googleMapsEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.1234567890!2d23.1234567!3d43.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDA3JzI0LjQiTiAyM8KwMDcnMjQuNCJF!5e0!3m2!1sen!2sbg!4v1234567890123!5m2!1sen!2sbg\" width=\"100%\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
-    },
-    "about": {
-      "story": "Our family has been beekeeping for over 20 years. We started with a few hives in our grandparents' yard, and today we maintain over 50 hives in an ecologically clean area of the Balkan Mountains. Each year we collect honey from different types of flowers and herbs, which gives our products a unique taste and aroma.",
-      "mission": "To provide pure and natural products that preserve the traditions of Bulgarian beekeeping and respect nature.",
-      "values": ["Tradition", "Naturalness", "Care for bees", "Eco-friendliness"]
-    },
-    "navigation": {
-      "home": "Home",
-      "products": "Products",
-      "about": "About",
-      "contact": "Contact"
-    },
-    "footer": {
-      "copyright": "© 2024 Chemish Apiary. All rights reserved.",
-      "madeWith": "Made with"
+  
+    "en": {
+      "siteTitle": "Green Path Family Farm",
+      "motto": "Natural flavors and handmade goods — from our home to yours",
+      "contacts": {
+        "phone": "+359 87 849 9026",
+        "email": "contact@example.com",
+        "address": "Beli Osam village, Lovech region",
+        "facebook": "https://facebook.com/greenpathfarm",
+        "instagram": "https://instagram.com/greenpathfarm",
+        "tiktok": "",
+        "googleMapsEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.1234567890!2d24.6900000!3d42.8500000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDUxJzAwLjAiTiAyNMKwNDEnMjAuMCJF!5e0!3m2!1sen!2sbg!4v1234567890123!5m2!1sen!2sbg\" width=\"100%\" height=\"300\" style=\"border:0;\" allowfullscreen loading=\"lazy\"></iframe>"
+      },
+      "about": {
+        "story": "Green Path Family Farm is a small family-run business inspired by traditional home crafting. We grow herbs, fruits, and garden crops in the foothills of the Balkan Mountains and turn them into handmade teas, syrups, jams, and craft products. What began as a family hobby gradually became a mission — to offer natural, honest, and clean products created with care and respect for nature.",
+        "mission": "To create natural, handmade products from locally grown ingredients while preserving family traditions and supporting sustainable agriculture.",
+        "values": [
+          "Pure ingredients",
+          "Family recipes",
+          "Handmade craftsmanship",
+          "Sustainable farming",
+          "Transparency",
+          "Local production",
+          "Respect for nature"
+        ]
+      },
+      "navigation": {
+        "home": "Home",
+        "products": "Products",
+        "about": "About",
+        "contact": "Contact"
+      },
+      "footer": {
+        "copyright": "© 2024 Green Path Family Farm. All rights reserved.",
+        "madeWith": "Made with"
+      }
     }
   }
-}
-
+  

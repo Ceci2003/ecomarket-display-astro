@@ -1,109 +1,231 @@
 {
-  "products": [
-    {
-      "id": "001",
-      "slug": "wildflower-honey-500g",
-      "bg": {
-        "name": "Пчелен мед 500g",
-        "shortDescription": "Натурален мед от екологично чист район.",
-        "longDescription": "Нашият пчелен мед се събира от различни видове диви цветя и билки в района на Стара планина. Това придава уникален вкус и аромат, който се различава всяка година в зависимост от цветенето. Медът е нефилтриран и непастьоризиран, което запазва всички полезни ензими и витамини.",
-        "ingredients": "100% пчелен мед",
-        "origin": "с. Чемиш, обл. Монтана",
-        "usage": "Подходящ за чай, десерти, закуски и като натурална подсладителка.",
-        "benefits": ["Подсилва имунитета", "Антибактериален ефект", "Богат на антиоксиданти", "Подобрява храносмилането"]
+    "products": [
+      {
+        "id": "001",
+        "slug": "balkan-morning-herbal-tea",
+        "bg": {
+          "name": "Билков чай „Балканска утрин“",
+          "shortDescription": "Ароматна смес от ръчно сушени билки от нашата ферма.",
+          "longDescription": "Уникална смес от джоджен, мащерка, маточина и див риган, ръчно събрани и сушени на сянка. Чаят е напълно натурален, без добавки и ароматизатори, подходящ за сутрешно събуждане, релакс и укрепване на имунитета.",
+          "ingredients": "джоджен, мащерка, маточина, риган",
+          "origin": "с. Бели Осъм, обл. Ловеч",
+          "usage": "Запарете 1 ч.л. в 250 мл гореща вода за 5–7 минути.",
+          "benefits": [
+            "Успокоява нервната система",
+            "Подпомага храносмилането",
+            "Облекчава настинки",
+            "Натурален антиоксидант"
+          ]
+        },
+        "en": {
+          "name": "Herbal Tea “Balkan Morning”",
+          "shortDescription": "A fragrant blend of hand-dried herbs from our farm.",
+          "longDescription": "A unique mix of mint, thyme, lemon balm, and wild oregano, hand-picked and naturally shade-dried. Completely natural and additive-free. Perfect for morning energy, relaxation, and immune support.",
+          "ingredients": "mint, thyme, lemon balm, oregano",
+          "origin": "Beli Osam village, Lovech region",
+          "usage": "Infuse 1 tsp in 250 ml hot water for 5–7 minutes.",
+          "benefits": [
+            "Calms the nervous system",
+            "Supports digestion",
+            "Helps with colds",
+            "Natural antioxidant"
+          ]
+        },
+        "price": 7.90,
+        "category": "tea",
+        "images": [
+          "/products/Herbal_Tea.png",
+          "/products/Herbal_Tea.png"
+        ],
+        "featured": true
       },
-      "en": {
-        "name": "Wildflower Honey 500g",
-        "shortDescription": "Natural honey from an ecologically clean region.",
-        "longDescription": "Our wildflower honey is collected from various types of wildflowers and herbs in the Balkan Mountains region. This gives it a unique taste and aroma that varies each year depending on the flowering. The honey is unfiltered and unpasteurized, preserving all beneficial enzymes and vitamins.",
-        "ingredients": "100% honey",
-        "origin": "Chemish village, Montana region",
-        "usage": "Perfect for tea, desserts, snacks, and as a natural sweetener.",
-        "benefits": ["Boosts immunity", "Antibacterial effect", "Rich in antioxidants", "Improves digestion"]
+  
+      {
+        "id": "002",
+        "slug": "wild-strawberry-jam",
+        "bg": {
+          "name": "Домашно сладко от горски ягоди",
+          "shortDescription": "Класическо сладко от ръчно набрани горски плодове.",
+          "longDescription": "Сладкото се приготвя по традиционна рецепта — на тих огън, без сгъстители и без никакви изкуствени добавки. Богат плодов аромат и естествен вкус на истински горски ягоди.",
+          "ingredients": "горски ягоди, захар, лимонов сок",
+          "origin": "с. Бели Осъм, обл. Ловеч",
+          "usage": "Перфектно за палачинки, кисело мляко, бисквити и десерти.",
+          "benefits": [
+            "Богат на антиоксиданти",
+            "Натурален плодов вкус",
+            "Подпомага енергийния баланс"
+          ]
+        },
+        "en": {
+          "name": "Wild Strawberry Jam",
+          "shortDescription": "Traditional jam made from hand-picked wild berries.",
+          "longDescription": "Prepared using a family recipe — slowly cooked over low heat, without thickeners or artificial additives. Rich fruity aroma and the natural taste of real wild strawberries.",
+          "ingredients": "wild strawberries, sugar, lemon juice",
+          "origin": "Beli Osam village, Lovech region",
+          "usage": "Perfect for pancakes, yogurt, cookies, and desserts.",
+          "benefits": [
+            "Rich in antioxidants",
+            "Natural fruit flavor",
+            "Boosts energy"
+          ]
+        },
+        "price": 9.50,
+        "category": "jam",
+        "images": [
+          "/products/Strawberry_Jam.png",
+          "/products/Strawberry_Jam.png"
+        ],
+        "featured": true
       },
-      "price": 12.50,
-      "category": "honey",
-      "images": ["/products/honey1.jpg", "/products/honey2.jpg"],
-      "featured": true
-    },
-    {
-      "id": "002",
-      "slug": "acacia-honey-500g",
-      "bg": {
-        "name": "Акациев мед 500g",
-        "shortDescription": "Светъл и деликатен мед с леко сладък вкус.",
-        "longDescription": "Акациевият мед е един от най-популярните видове мед в България. Той е светъл, почти прозрачен, с леко сладък и деликатен вкус. Идеален за деца и хора, които предпочитат по-лек вкус. Медът кристализира много бавно, което го прави подходящ за дълго съхранение.",
-        "ingredients": "100% акациев мед",
-        "origin": "с. Чемиш, обл. Монтана",
-        "usage": "Отличен за закуски, като подсладителка в чай и кафе, и в различни десерти.",
-        "benefits": ["Успокоява стомаха", "Подходящ за деца", "Богат на фруктоза", "Лесно усвояване"]
+  
+      {
+        "id": "003",
+        "slug": "dried-mint-balkan-breeze",
+        "bg": {
+          "name": "Сушена мента „Балкански полъх“",
+          "shortDescription": "Ароматна мента, сушена естествено на сянка.",
+          "longDescription": "Ръчно събрана мента, сушена по традиционен метод, за да запази естествения си аромат и полезни свойства. Подходяща за чай, кулинария и домашна козметика.",
+          "ingredients": "100% мента",
+          "origin": "с. Бели Осъм, обл. Ловеч",
+          "usage": "Използвайте за чай, чайни смеси или подправка.",
+          "benefits": [
+            "Освежава",
+            "Подпомага храносмилането",
+            "Намалява напрежението"
+          ]
+        },
+        "en": {
+          "name": "Dried Mint “Balkan Breeze”",
+          "shortDescription": "Fragrant mint, naturally shade-dried.",
+          "longDescription": "Hand-picked mint, dried using a traditional method to preserve its aroma and beneficial properties. Suitable for tea, cooking, and homemade cosmetics.",
+          "ingredients": "100% mint",
+          "origin": "Beli Osam village, Lovech region",
+          "usage": "Use for tea, blends, or as a spice.",
+          "benefits": [
+            "Refreshing",
+            "Supports digestion",
+            "Reduces tension"
+          ]
+        },
+        "price": 4.90,
+        "category": "herbs",
+        "images": [
+          "/products/mint1.jpg"
+        ],
+        "featured": false
       },
-      "en": {
-        "name": "Acacia Honey 500g",
-        "shortDescription": "Light and delicate honey with a mildly sweet taste.",
-        "longDescription": "Acacia honey is one of the most popular types of honey in Bulgaria. It is light, almost transparent, with a mildly sweet and delicate taste. Ideal for children and people who prefer a lighter flavor. The honey crystallizes very slowly, making it suitable for long-term storage.",
-        "ingredients": "100% acacia honey",
-        "origin": "Chemish village, Montana region",
-        "usage": "Excellent for snacks, as a sweetener in tea and coffee, and in various desserts.",
-        "benefits": ["Soothes the stomach", "Suitable for children", "Rich in fructose", "Easy to digest"]
+  
+      {
+        "id": "004",
+        "slug": "homemade-peach-syrup",
+        "bg": {
+          "name": "Домашен прасковен сироп",
+          "shortDescription": "Натурален сироп от узрели праскови.",
+          "longDescription": "Приготвен от сладки праскови, брани на ръка от нашата градина. Без оцветители, без консерванти. Подходящ за разреждане с вода, сода или коктейли.",
+          "ingredients": "праскови, захар, лимонена киселина",
+          "origin": "с. Бели Осъм, обл. Ловеч",
+          "usage": "Разредете 1:6 с вода или използвайте в коктейли.",
+          "benefits": [
+            "Освежава",
+            "Богат на натурален вкус",
+            "Подходящ за деца"
+          ]
+        },
+        "en": {
+          "name": "Homemade Peach Syrup",
+          "shortDescription": "Natural syrup made from ripe peaches.",
+          "longDescription": "Prepared using hand-picked peaches from our garden. No colorants, no preservatives. Ideal for homemade drinks, sodas, or cocktails.",
+          "ingredients": "peaches, sugar, citric acid",
+          "origin": "Beli Osam village, Lovech region",
+          "usage": "Dilute 1:6 with water or use in cocktails.",
+          "benefits": [
+            "Refreshing",
+            "Natural peach flavor",
+            "Kid-friendly"
+          ]
+        },
+        "price": 11.90,
+        "category": "syrup",
+        "images": [
+          "/products/Peach_Syrup.png"
+        ],
+        "featured": true
       },
-      "price": 14.00,
-      "category": "honey",
-      "images": ["/products/acacia1.jpg", "/products/acacia2.jpg"],
-      "featured": true
-    },
-    {
-      "id": "003",
-      "slug": "propolis-tincture-50ml",
-      "bg": {
-        "name": "Прополисова тинктура 50ml",
-        "shortDescription": "Натурален прополис с антибактериални свойства.",
-        "longDescription": "Прополисът е природен антибиотик, който пчелите използват за защита на кошера. Нашата тинктура се приготвя от чист прополис, екстрахиран в медицински алкохол. Използва се за укрепване на имунитета и при различни здравословни проблеми.",
-        "ingredients": "Прополис, медицински алкохол",
-        "origin": "с. Чемиш, обл. Монтана",
-        "usage": "Приема се по 10-15 капки в малко вода, 2-3 пъти дневно преди хранене.",
-        "benefits": ["Антибактериален", "Антивирусен", "Укрепва имунитета", "Запазва зъбите"]
+  
+      {
+        "id": "005",
+        "slug": "soy-wax-candle-forest-trail",
+        "bg": {
+          "name": "Ръчна свещ от соев восък „Горска пътека“",
+          "shortDescription": "Аромат на бор, смола и балканска свежест.",
+          "longDescription": "Ръчно излята свещ, изработена от висококачествен соев восък. Ароматизиранa с натурални масла, които създават усещане за разходка в гората. Екологичен фитил, дълго горене.",
+          "ingredients": "соев восък, натурални масла",
+          "origin": "с. Бели Осъм, обл. Ловеч",
+          "usage": "Запалете за релакс и уютна атмосфера.",
+          "benefits": [
+            "Екологичен продукт",
+            "Чисто горене",
+            "Дълготраен аромат"
+          ]
+        },
+        "en": {
+          "name": "Soy Wax Candle “Forest Trail”",
+          "shortDescription": "A scent of pine, resin, and mountain freshness.",
+          "longDescription": "Hand-poured candle made from high-quality soy wax. Infused with natural essential oils that evoke the feeling of a forest walk. Eco-friendly wick, long burn time.",
+          "ingredients": "soy wax, natural oils",
+          "origin": "Beli Osam village, Lovech region",
+          "usage": "Light for relaxation and a cozy atmosphere.",
+          "benefits": [
+            "Eco-friendly",
+            "Clean burning",
+            "Long-lasting aroma"
+          ]
+        },
+        "price": 14.90,
+        "category": "craft",
+        "images": [
+          "/products/candle1.jpg",
+          "/products/candle2.jpg"
+        ],
+        "featured": false
       },
-      "en": {
-        "name": "Propolis Tincture 50ml",
-        "shortDescription": "Natural propolis with antibacterial properties.",
-        "longDescription": "Propolis is a natural antibiotic that bees use to protect the hive. Our tincture is made from pure propolis extracted in medical alcohol. Used to strengthen immunity and for various health issues.",
-        "ingredients": "Propolis, medical alcohol",
-        "origin": "Chemish village, Montana region",
-        "usage": "Take 10-15 drops in a little water, 2-3 times daily before meals.",
-        "benefits": ["Antibacterial", "Antiviral", "Strengthens immunity", "Preserves teeth"]
-      },
-      "price": 18.00,
-      "category": "other",
-      "images": ["/products/propolis1.jpg"],
-      "featured": false
-    },
-    {
-      "id": "004",
-      "slug": "beeswax-candles-set",
-      "bg": {
-        "name": "Свещи от пчелен восък - комплект",
-        "shortDescription": "Екологични свещи от чист пчелен восък.",
-        "longDescription": "Нашите свещи са изработени от 100% чист пчелен восък, без добавки или химикали. При горене излъчват приятен, естествен аромат и не отделят вредни вещества. Идеални за създаване на уютна атмосфера в дома.",
-        "ingredients": "100% пчелен восък",
-        "origin": "с. Чемиш, обл. Монтана",
-        "usage": "Запалете свещите за създаване на уютна атмосфера. Времетраенето на горене е около 4-5 часа.",
-        "benefits": ["Екологично", "Естествен аромат", "Не отделя вредни вещества", "Дълго горене"]
-      },
-      "en": {
-        "name": "Beeswax Candles Set",
-        "shortDescription": "Eco-friendly candles made from pure beeswax.",
-        "longDescription": "Our candles are made from 100% pure beeswax, without additives or chemicals. When burning, they emit a pleasant, natural aroma and do not release harmful substances. Ideal for creating a cozy atmosphere at home.",
-        "ingredients": "100% beeswax",
-        "origin": "Chemish village, Montana region",
-        "usage": "Light the candles to create a cozy atmosphere. Burn time is approximately 4-5 hours.",
-        "benefits": ["Eco-friendly", "Natural aroma", "No harmful emissions", "Long burn time"]
-      },
-      "price": 25.00,
-      "category": "other",
-      "images": ["/products/candles1.jpg", "/products/candles2.jpg"],
-      "featured": false
-    }
-  ]
-}
-
+  
+      {
+        "id": "006",
+        "slug": "lavender-soap-natural",
+        "bg": {
+          "name": "Натурален сапун с лавандула",
+          "shortDescription": "Ръчно направен сапун от растителни масла.",
+          "longDescription": "Сапунът е изработен по студен процес с висококачествени растителни масла, обогатен със сушена лавандула от нашата ферма. Подходящ за ежедневна употреба — хидратира и успокоява кожата.",
+          "ingredients": "кокосово масло, зехтин, лавандула",
+          "origin": "с. Бели Осъм, обл. Ловеч",
+          "usage": "Използвайте върху влажна кожа и изплакнете.",
+          "benefits": [
+            "Хидратира кожата",
+            "Успокоява",
+            "Натурален аромат"
+          ]
+        },
+        "en": {
+          "name": "Natural Lavender Soap",
+          "shortDescription": "Handmade soap from botanical oils.",
+          "longDescription": "Crafted using the cold-process method with premium plant oils and dried lavender grown on our farm. Suitable for daily use — moisturizes and soothes the skin.",
+          "ingredients": "coconut oil, olive oil, lavender",
+          "origin": "Beli Osam village, Lovech region",
+          "usage": "Apply to wet skin and rinse thoroughly.",
+          "benefits": [
+            "Moisturizes the skin",
+            "Soothing effect",
+            "Natural aroma"
+          ]
+        },
+        "price": 6.90,
+        "category": "cosmetics",
+        "images": [
+          "/products/soap1.jpg"
+        ],
+        "featured": false
+      }
+    ]
+  }
+  
